@@ -1,0 +1,28 @@
+{
+	"schemaVersion": 1,
+	"id": "reminder",
+	"version": "${version}",
+	"name": "Reminder",
+    "description": "Displays your saved notes immediately when you join a server you’ve written reminders for.",
+	"authors": [
+		"@armandukx"
+	],
+	"contact": {
+		"homepage": "https://modrinth.com/project/ciBoFTAe",
+		"sources": "https://github.com/Armandukx/Reminder"
+	},
+	"license": "Attribution-NonCommercial-NoDerivatives 4.0 International",
+	"icon": "assets/reminder/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"client": [
+			"io.armandukx.reminder.Reminder"
+		]
+	},
+	"depends": {
+		"fabricloader": ">=0.18.1",
+		"minecraft": "~1.21",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}

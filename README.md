@@ -43,7 +43,7 @@
 ## 🤝 Support
 <p>If you need help installing the mod or troubleshooting issues, join our <a href="https://discord.gg/MGrNJqsqZt">Discord community</a>. You can reach out directly to Armandukx or open a support ticket.</p>
 
-<div align="center">
+<div>
   <a href="https://discord.gg/MGrNJqsqZt">
     <img src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/social/discord-plural_64h.png" alt="Discord Server">
   </a>

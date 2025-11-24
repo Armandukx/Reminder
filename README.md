@@ -15,39 +15,41 @@
 <h4 align="center">Never forget what you planned! Reminder shows your saved notes when you join a server.</h4>
 
 ## ⚡ How to Use
-<ul>
-  <li>Join a server and, if you have saved notes for it, Reminder will automatically display them in chat on join.</li>
-  <li>Commands (type in chat starting with <code>/reminder</code>):</li>
-  <ul>
-    <li><code>/reminder add &lt;message&gt;</code> – Adds a new reminder for the current server you are connected to.</li>
-    <li><code>/reminder edit &lt;message&gt;</code> – Overwrites existing reminders for the current server.</li>
-    <li><code>/reminder delete</code> – Deletes all reminders for the current server.</li>
-  </ul>
+<ul> 
+  <li>Join any server - if you have saved notes for it, Reminder will automatically display them when you enter the world.</li> 
+  <li>Available commands (use <code>/reminder</code> in chat):</li> 
+  <ul> 
+    <li><code>/reminder add &lt;message&gt;</code> - Saves a new reminder for the current server.</li> 
+    <li><code>/reminder edit &lt;message&gt;</code> - Replaces all existing reminders for the current server.</li> 
+    <li><code>/reminder delete</code> - Removes all reminders for the current server.</li> </ul> 
 </ul>
+
+<br/><br/>
 
 ## 🎨 Customization / Settings
-<p>You can customize how your reminders appear in chat by editing the <code>Reminder.json</code> file located in <code>config/Armandukx/</code>. The following settings are available:</p>
-
-<ul>
-  <li><strong>prefix</strong>: The text prefix before every reminder. Supports Minecraft formatting codes (<code>§</code>) for colors and styles.</li>
-  <li><strong>onJoin</strong>: Message that shows at the top when you join a server. Supports color codes and bold formatting.</li>
+<p> You can adjust how your reminders appear by editing the 
+  <code>Reminder.json</code> file located in: <code>config/Armandukx/</code> 
+</p> 
+<ul> 
+  <li><strong>prefix</strong> - Text placed before every reminder. Supports Minecraft formatting (<code>§</code> color/style codes).
+</li> 
+  <li><strong>onJoin</strong> - A header message shown when joining a server. Fully supports color codes and bold formatting.
+  </li> 
 </ul>
+
+<br/><br/>
 
 ## 📋 Features
-<ul>
-  <li>Automatically displays reminders when you join a server you’ve written notes for.</li>
-  <li>Supports multiple servers and multiple messages per server.</li>
-  <li>Customizable text colors, bold, and formatting to make reminders more visible.</li>
+<ul> <li>Automatically displays your notes for each server upon joining.</li> 
+  <li>Supports multiple servers, each with individual messages.</li> 
+  <li>Customizable colors, bold text, and formatting for improved visibility.</li> 
 </ul>
 
-## 🤝 Support
-<p>If you need help installing the mod or troubleshooting issues, join our <a href="https://discord.gg/MGrNJqsqZt">Discord community</a>. You can reach out directly to Armandukx or open a support ticket.</p>
+<br/><br/>
 
-<div>
-  <a href="https://discord.gg/MGrNJqsqZt">
-    <img src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/social/discord-plural_64h.png" alt="Discord Server">
-  </a>
-</div>
+## 🤝 Support
+<p> If you need help installing or configuring the mod, join our community: </p> <div> <a href="https://discord.gg/MGrNJqsqZt"> <img src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/social/discord-plural_64h.png" alt="Discord Server"> </a> </div> 
+<br/><br/>
 
 ## 📄License
 This project operates under the Attribution-NonCommercial-NoDerivatives 4.0 International, ensuring open-source accessibility. For further information, please refer to the [LICENSE](https://github.com/Armandukx/Reminder/blob/master/LICENSE) file.

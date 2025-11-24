@@ -14,9 +14,7 @@
 
 <h4 align="center">Never forget what you planned! Reminder shows your saved notes when you join a server.</h4>
 
----
-
-<h2 align="center">⚡ How to Use</h2>
+## ⚡ How to Use
 <ul>
   <li>Join a server and, if you have saved notes for it, Reminder will automatically display them in chat on join.</li>
   <li>Commands (type in chat starting with <code>/reminder</code>):</li>
@@ -27,9 +25,7 @@
   </ul>
 </ul>
 
----
-
-<h2 align="center">🎨 Customization / Settings</h2>
+## 🎨 Customization / Settings
 <p>You can customize how your reminders appear in chat by editing the <code>Reminder.json</code> file located in <code>config/Armandukx/</code>. The following settings are available:</p>
 
 <ul>
@@ -37,18 +33,14 @@
   <li><strong>onJoin</strong>: Message that shows at the top when you join a server. Supports color codes and bold formatting.</li>
 </ul>
 
----
-
-<h2 align="center">📋 Features</h2>
+## 📋 Features
 <ul>
   <li>Automatically displays reminders when you join a server you’ve written notes for.</li>
   <li>Supports multiple servers and multiple messages per server.</li>
   <li>Customizable text colors, bold, and formatting to make reminders more visible.</li>
 </ul>
 
----
-
-<h2 align="center">🤝 Support</h2>
+## 🤝 Support
 <p>If you need help installing the mod or troubleshooting issues, join our <a href="https://discord.gg/MGrNJqsqZt">Discord community</a>. You can reach out directly to Armandukx or open a support ticket.</p>
 
 <div align="center">
@@ -56,3 +48,6 @@
     <img src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/social/discord-plural_64h.png" alt="Discord Server">
   </a>
 </div>
+
+## 📄License
+This project operates under the Attribution-NonCommercial-NoDerivatives 4.0 International, ensuring open-source accessibility. For further information, please refer to the [LICENSE](https://github.com/Armandukx/Reminder/blob/master/LICENSE) file.

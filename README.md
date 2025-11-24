@@ -1,4 +1,6 @@
-<h1 align="center">Reminder</h1>
+<div align="center">
+  <h1>Reminder</h1>
+</div>
 
 <div align="center">
   <a href="https://modrinth.com/project/ciBoFTAe" target="_blank">

@@ -8,14 +8,13 @@ import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallba
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.server.command.ServerCommandSource;
+import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 
 import java.util.Arrays;
 
 public class Command {
-    public static ServerCommandSource source;
     public static void register() {
-        source = new Reminder.ClientSource();
         ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> registerCommands(dispatcher));
     }
 
@@ -89,7 +88,9 @@ public class Command {
         return null;
     }
 
-    private static void SendPlayerMessage(String message) {
-        source.sendMessage(Text.literal("[Reminder] " + message));
+    private static void SendPlayerMessage(String text) {
+        MutableText message = Text.literal(text.replace("&", "§"));
+        MinecraftClient client = MinecraftClient.getInstance();
+        if (client.player != null) client.player.sendMessage(message, false);
     }
 }

@@ -7,12 +7,17 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ServerInfo;
-import net.minecraft.server.command.ServerCommandSource;
+import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 
 public class Reminder implements ClientModInitializer {
     private boolean RemindedServer = false;
+    private int PingTicksLeft = 0;
+    private int PingsRemaining = 0;
+    private final int TICKS_BETWEEN_PINGS = 2;
 
     @Override
     public void onInitializeClient() {
@@ -21,61 +26,45 @@ public class Reminder implements ClientModInitializer {
 
         ClientTickEvents.START_CLIENT_TICK.register(client -> {
             ServerInfo serverData = client.getCurrentServerEntry();
-            if (serverData == null) {
+            if (serverData == null || client.player == null) {
                 RemindedServer = false;
                 return;
-            };
+            }
 
             String hostname = serverData.address;
 
-            if (RemindedServer) return;
-            RemindedServer = true;
+            if (!RemindedServer && Config.data.reminderEnabled && Config.data.serverReminders.keySet().stream().anyMatch(hostname::contains)) {
 
-            System.out.println("[Reminder] Connected to: " + hostname);
+                RemindedServer = true;
 
-            if (!Config.data.reminderEnabled) return;
+                SendChat(Config.data.messages.prefix + Config.data.messages.onJoin, false);
 
-            boolean matches = Config.data.serverReminders.keySet().stream().anyMatch(hostname::contains);
-            if (!matches) return;
+                PingsRemaining = 3;
+                PingTicksLeft = 0;
 
-            System.out.println("[Reminder] Found matching server");
-
-            ServerCommandSource source = new ClientSource();
-
-            sendChat(source, ConvertToText(Config.data.messages.prefix + Config.data.messages.onJoin, false));
-
-            String[] lines = Config.data.serverReminders.getOrDefault(hostname, new String[]{});
-            for (String line : lines) {
-                sendChat(source, ConvertToText(Config.data.messages.prefix + line, true));
+                String[] lines = Config.data.serverReminders.getOrDefault(hostname, new String[]{});
+                for (String line : lines) {
+                    SendChat(Config.data.messages.prefix + line, true);
+                }
             }
 
-            System.out.println("[Reminder] Sent reminders");
+            if (PingsRemaining > 0) {
+                if (PingTicksLeft <= 0) {
+                    RegistryEntry.Reference<net.minecraft.sound.SoundEvent> soundRef = SoundEvents.BLOCK_NOTE_BLOCK_PLING;
+                    client.player.playSoundToPlayer(soundRef.value(), SoundCategory.MASTER, 2.0f, 1.0f);
+                    PingsRemaining--;
+                    PingTicksLeft = TICKS_BETWEEN_PINGS;
+                } else {
+                    PingTicksLeft--;
+                }
+            }
         });
     }
 
-    private Text ConvertToText(String text, boolean bold) {
-        MutableText literal = Text.literal(text.replace("&", "§"));
-        if (bold) {
-            literal = literal.styled(style -> style.withBold(true));
-        }
-        return literal;
-    }
-
-    private void sendChat(ServerCommandSource source, Text message) {
-        source.sendMessage(message);
-    }
-
-    public static class ClientSource extends ServerCommandSource {
-        public ClientSource() {
-            super(null, null, null, null, 4, "Reminder", Text.literal("Reminder"), null, null);
-        }
-
-        @Override
-        public void sendMessage(Text message) {
-            MinecraftClient client = MinecraftClient.getInstance();
-            if (client.player != null) {
-                client.player.sendMessage(message, false);
-            }
-        }
+    private void SendChat(String text, boolean bold) {
+        MutableText message = Text.literal(text.replace("&", "§"));
+        if (bold) message = message.styled(style -> style.withBold(true));
+        MinecraftClient client = MinecraftClient.getInstance();
+        if (client.player != null) client.player.sendMessage(message, false);
     }
 }
